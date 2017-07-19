@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `login`.`users` (
+CREATE TABLE IF NOT EXISTS `users` (
  `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing user_id of each user, unique index',
  `user_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT 'user''s name, unique',
  `user_password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'user''s password in salted and hashed format',
@@ -12,6 +12,8 @@ CREATE TABLE IF NOT EXISTS `login`.`users` (
  `user_last_failed_login` int(10) DEFAULT NULL COMMENT 'unix timestamp of last failed login attempt',
  `user_registration_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
  `user_registration_ip` varchar(39) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0.0.0.0',
+ `user_pid` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'user''s ID on the acasi survey system, unique',
+ `user_most_recent_survey` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'the most recent acasi survey the user accessed',
  PRIMARY KEY (`user_id`),
  UNIQUE KEY `user_name` (`user_name`),
  UNIQUE KEY `user_email` (`user_email`)
